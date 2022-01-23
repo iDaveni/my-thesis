@@ -1,0 +1,76 @@
+svg:not {
+  overflow: hidden;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  transition: all 1s;
+  opacity: 1;
+}
+.movie:hover {
+  background-color: rgba(195, 157, 157, 0.5);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.films {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.image {
+  width: 300px;
+  height: 440px;
+}
+
+.title {
+  width: 100%;
+  max-width: 250px;
+  padding-left: 10px;
+  height: 25px;
+}
+.release {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  color: rgb(143, 122, 122);
+}
+.box {
+  border-bottom: 1px solid rgb(163, 106, 106);
+}
+
+.muiSvgIcon {
+  height: 20px;
+  width: 20px;
+}
+.svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.contex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movieBox {
+  position: relative;
+  margin: 0 25px 25px 0;
+}
+.btn {
+  border-radius: 50px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  transition: 1s all;
+}
+.btn:hover {
+  background-color: rgb(226, 217, 202);
+}

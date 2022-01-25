@@ -8,7 +8,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 
-
 const favoriteMoviesReducer = (state = [], action) => {
   if (action.type === "ADD_FAVORITE_MOVIE") {
     return [...state, action.payload];
@@ -23,7 +22,8 @@ const redusers = combineReducers({
   favoriteMovies: favoriteMoviesReducer,
 });
 
-const store = createStore(redusers, composeWithDevTools()); // store
+const store = createStore(redusers, composeWithDevTools());
+
 
 ReactDOM.render(
   <BrowserRouter>
@@ -33,8 +33,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

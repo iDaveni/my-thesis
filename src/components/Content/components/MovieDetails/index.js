@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import styles from "./style.module.scss";
@@ -23,7 +23,7 @@ const MovieDetails = () => {
         setMovie(response.data);
       }
     });
-  }, [setMovie]);
+  }, [setMovie, id]);
 
   useEffect(() => {
     axios.get(urlRecomendation).then((response) => {
@@ -31,7 +31,7 @@ const MovieDetails = () => {
         setRecomend(response.data.results);
       }
     });
-  }, [setRecomend]);
+  }, [setRecomend, id]);
 
   if (movie === null) {
     return null;
@@ -52,7 +52,7 @@ const MovieDetails = () => {
         <div>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} />
         </div>
-        <div className={styles.filminfo}>
+        <div key={movie.id} className={styles.filminfo}>
           <div>
             <span>{movie.vote_average}% </span>
             {movie.original_title}({movie.release_date})
@@ -63,12 +63,12 @@ const MovieDetails = () => {
           <div>Genres</div>
           <div className={styles.genres}>
             {movie.genres.map((item) => (
-              <div>{item.name}</div>
+              <div key={item.id}>{item.name}</div>
             ))}
           </div>
         </div>
         <div className={styles.svg}>
-          <button className={styles.btn}>
+          <button onClick={() => onClickhandler(movie)} className={styles.btn}>
             <svg
               className={styles.muiSvgIcon}
               focusable="false"
@@ -87,10 +87,12 @@ const MovieDetails = () => {
         </div>
         <div className={styles.scrolblock}>
           {recomend.map((item) => (
-            <div className={styles.movieItem}>
+            <div key={item.id} className={styles.movieItem}>
               <div className={styles.item}>
                 <p className={styles.titleimg}> {item.title}</p>
-                <a>hhtp</a>
+                <Link to={"/movie/" + item.id}>
+                  <button>check</button>
+                </Link>
                 <button onClick={() => onClickhandler(item)}>btn</button>
               </div>
               <img

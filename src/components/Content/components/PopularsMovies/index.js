@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+  import { Link } from "react-router-dom";
 import styles from "./style.module.scss";
+import {
+  addFavoriteMovieAction,
+  removeFavoriteMovieAction,
+} from "../../../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const PopularsMovies = () => {
+  const dispatch = useDispatch();
+  const favoriteMovies = useSelector((store) => store.favoriteMovies);
   const [movie, setMovie] = useState([]);
   const url =
-    "https://api.themoviedb.org/3/movie/popular?api_key=6e12ee409015717bcd9ab0435b9640cf&page=2";
+    "https://api.themoviedb.org/3/movie/popular?api_key=6e12ee409015717bcd9ab0435b9640cf&page=1";
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -15,6 +22,15 @@ const PopularsMovies = () => {
       }
     });
   }, [setMovie]);
+
+  const onClickhandler = (movie) => {
+    const isFevorite = favoriteMovies.find((item) => item.id === movie.id);
+    if (isFevorite) {
+      dispatch(removeFavoriteMovieAction(movie.id));
+    } else {
+      dispatch(addFavoriteMovieAction(movie));
+    }
+  };
 
   return (
     <div className={styles.films}>
@@ -39,7 +55,10 @@ const PopularsMovies = () => {
             </div>
           </Link>
           <div className={styles.svg}>
-            <button className={styles.btn}>
+            <button
+              onClick={() => onClickhandler(item)}
+              className={styles.btn}
+            >
               <svg
                 className={styles.muiSvgIcon}
                 focusable="false"

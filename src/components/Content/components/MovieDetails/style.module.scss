@@ -1,6 +1,6 @@
 .image {
-  width: 350px;
-  height: 440px;
+  width: 440px;
+  height: 190px;
   margin-right: 15px;
 }
 .movieItem {
@@ -11,14 +11,26 @@
   position: absolute;
   left: 0;
   bottom: 0;
+  max-width: 420px;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
+  width: 100%;
+  padding: 10px;
 }
 
 .details {
   padding: 50px 100px 100px 100px;
 }
-
+.titleimg {
+  color: white;
+  display: inline-block;
+  margin-right: 10px;
+}
+.link {
+  margin-right: 10px;
+}
 .scrolblock {
-  height: 455px;
+  height: 100%;
   display: flex;
   width: 100%;
   border: none;
@@ -32,7 +44,59 @@
   margin-bottom: 15px;
   border-bottom: 2px solid rgba(38, 48, 134, 0.486);
 }
-
+.rateFilm {
+  display: flex;
+  margin-bottom: 15px;
+}
+.titleOriginal {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+}
+.overview {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+}
+.movieOver {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.genres {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-bottom: 5px;
+}
+.count {
+  display: inline-block;
+  color: blue;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.votes {
+  color: rgba(0, 0, 0, 0.54);
+}
+.release {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+}
+.span {
+  background-color: rgba(38, 48, 134, 0.486);
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  justify-content: center;
+  margin-right: 10px;
+}
 .filmRecom {
   background-color: white;
   padding: 1px 5px 0 10px;
@@ -42,9 +106,36 @@
 .filminfo {
   display: flex;
   flex-direction: column;
+  padding: 15px;
 }
-.genres {
+.genresItem {
   display: flex;
+  flex-wrap: wrap;
+}
+.itemGenger {
+  color: rgba(0, 0, 0, 0.87);
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  padding: 5px;
+  margin-right: 10px;
+  align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  white-space: nowrap;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #e0e0e0;
+}
+.itemSpan {
+  padding: 5px;
+}
+.recommend {
+  font-size: 18px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
 }
 .svg {
   padding-right: 15px;
@@ -54,7 +145,14 @@
   height: 20px;
   width: 20px;
 }
-
+.likeFilm {
+  fill: blue;
+  height: 20px;
+  width: 20px;
+}
+.muiSvgIcon:hover {
+  fill: blue;
+}
 .btn {
   border-radius: 50px;
   background-color: transparent;
@@ -63,4 +161,7 @@
   text-align: center;
   border: none;
   transition: 1s all;
+}
+.btn:hover {
+  background-color: white;
 }

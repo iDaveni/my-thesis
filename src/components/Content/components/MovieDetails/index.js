@@ -20,7 +20,7 @@ const MovieDetails = () => {
     speed: 500,
     slidesToShow: 4,
     autoplay: true,
-    autoplaySpeed: 1500,  
+    autoplaySpeed: 1500,
     centerMode: true,
     pauseOnHover: true,
     slidesToScroll: 1,

@@ -2,15 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import Slider from "react-slick";
 import styles from "./style.module.scss";
 import {
   addFavoriteMovieAction,
   removeFavoriteMovieAction,
 } from "../../../../redux/actions";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [recomend, setRecomend] = useState([]);
+  let settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    autoplay: true,
+    autoplaySpeed: 1500,  
+    centerMode: true,
+    pauseOnHover: true,
+    slidesToScroll: 1,
+  };
   const dispatch = useDispatch();
   const favoriteMovies = useSelector((store) => store.favoriteMovies);
   const { id } = useParams();
@@ -86,11 +100,11 @@ const MovieDetails = () => {
             <svg
               className={isLike ? styles.likeFilm : styles.muiSvgIcon}
               focusable="false"
-              fill="purple"
+              fill="black"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
             </svg>
           </button>
         </div>
@@ -99,7 +113,7 @@ const MovieDetails = () => {
         <div className={styles.recommend}>
           <p>Recommendations</p>
         </div>
-        <div className={styles.scrolblock}>
+        <Slider {...settings}>
           {recomend.map((recomendMovie) => {
             const isLike = !!favoriteMovies.find(
               (item) => item.id === recomendMovie.id
@@ -144,14 +158,14 @@ const MovieDetails = () => {
                       viewBox="0 0 24 24"
                       aria-hidden="true"
                     >
-                      <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
                     </svg>
                   </button>
                 </div>
               </div>
             );
           })}
-        </div>
+        </Slider>
       </div>
     </div>
   );

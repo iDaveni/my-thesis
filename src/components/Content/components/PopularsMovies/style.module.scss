@@ -14,7 +14,11 @@ svg:not {
   cursor: pointer;
   opacity: 0.8;
 }
-
+.likeFilm {
+  fill: blue;
+  height: 20px;
+  width: 20px;
+}
 .films {
   display: flex;
   flex-wrap: wrap;
